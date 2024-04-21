@@ -1,0 +1,17 @@
+Player 1	Player 2	Result	Secret Word	Player 1 Letter Guesses	Player 1 Word Guesses	Player 2 Letter Guesses	Player 2 Word Guesses
+Tambeea	boppity\	LOST	poptropica	3	1	4	0
+bob	ross	LOST	satisfactory	3	1	3	0
+play	house	LOST	poptropica	6	0	4	0
+red	blue	LOST	satisfactory	9	0	3	0
+controll	swoop	LOST	satisfactory	22	0	3	0
+chinaemelum	nina	LOST	poptropica	6	0	3	1
+nina	chinaemelum	LOST	poptropica	6	1	0	0
+hello	rorry	LOST	poptropica	5	1	0	0
+test	ok	LOST	satisfactory	2	1	0	0
+test	tester	LOST	satisfactory	4	1	0	0
+rob	bob	LOST	satisfactory	9	1	3	0
+testing	once again	LOST	poptropica	4	1	0	0
+test	pop	LOST	poptropica	6	0	4	0
+bob	rob	LOST	poptropica	1	1	0	0
+test	tester	LOST	poptropica	4	0	1	1
+bob	caro	LOST	poptropica	2	0	0	1
