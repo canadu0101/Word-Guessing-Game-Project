@@ -2,7 +2,7 @@ README
 
 
 ####Word Guessing Game
-[This Python script allows two players to play a word guessing game where they take turns guessing letters in a secret word and have the option in guessing the whole word. The game tracks player scores based on how many letters they got correct and their guesses. Each player has 3 attempts to guess a word. Attempts are not used up when guessing a letter or the word correctly. Once all attempts are used, the game switches over to player 2. The game then loops back to player 1 and repeats until whichever player finds the word first. If neither play guess the word, whichever player guesses the most amount of letters wins!]
+[This Python script allows two players to play a word guessing game where they take turns guessing letters in a secret word and have the option in guessing the whole word. When choosing to guess a word, simply right yes or without any space in the beginning. The game tracks player scores based on how many letters they got correct and their guesses. Each player has 3 attempts to guess a word. Attempts are not used up when guessing a letter or the word correctly. Once all attempts are used, the game switches over to player 2. The game then loops back to player 1 and repeats until whichever player finds the word first. If neither play guess the word, whichever player guesses the most amount of letters wins!]
 
 ####Installation
 1. Make sure you have Python installed on your system.
@@ -18,7 +18,6 @@ README
 
 ####Contributors
 Chinaemelum Anadu
-Alejandra Saravia
 Nina Enwesi
 
 
