@@ -1,5 +1,6 @@
-import random #10.0
+import random
 import os
+import matplotlib.pyplot as plt  # Import Matplotlib library
 
 # Function to choose a random word from a list
 def choose_secret_word():
@@ -31,7 +32,6 @@ player2 = input("What is the name of player 2? ")
 print(f"Welcome, {player1} and {player2}! Let's play the Word Guessing Game.")
 
 # Choose secret word and initialize game variables
-words = ["poptropica", "satisfactory"]
 secret_word = choose_secret_word()
 hidden_word = initialize_hidden_word(secret_word)
 
@@ -42,6 +42,12 @@ player1_word_guesses = 0
 player2_letter_guesses = 0
 player2_word_guesses = 0
 
+# Track letter and word guesses for each player
+player1_letter_guesses_list = []
+player2_letter_guesses_list = []
+player1_word_guesses_list = []
+player2_word_guesses_list = []
+
 # Main game loop
 while attempts_left > 0 and "*" in hidden_word:
     # print_word_to_guesses(hidden_word)
@@ -50,11 +56,12 @@ while attempts_left > 0 and "*" in hidden_word:
     # Check if the guessed letter is in the secret word
     if letter in secret_word:
         count_occurrences = secret_word.count(letter)
-        # Change lines 59 and 60 to match if else from lines 76-79
         if current_player == player1:
             player1_letter_guesses += 1
+            player1_letter_guesses_list.append(player1_letter_guesses)  # Track player 1 letter guesses
         else:
             player2_letter_guesses += 1
+            player2_letter_guesses_list.append(player2_letter_guesses)  # Track player 2 letter guesses
 
         # Update the hidden word without revealing positions of letters (test case #1)
         # for i in range(len(secret_word)):
@@ -73,27 +80,14 @@ while attempts_left > 0 and "*" in hidden_word:
                     print(f"Congratulations, {current_player}! You guessed the word: {secret_word}")
                     if current_player == player1:
                         player1_word_guesses += 1
+                        player1_word_guesses_list.append(player1_word_guesses)  # Track player 1 word guesses
                     else:
                         player2_word_guesses += 1
+                        player2_word_guesses_list.append(player2_word_guesses)  # Track player 2 word guesses
                     break  # Exit the loop if word is guessed correctly
                 else:
                     print(f"Sorry, {current_player}! That's not the word.")
                     attempts_left -= 1
-
-#Test case number 1, word guessing is mandatory.
-#if attempts_left > 0:
-   # word_guess = input(f"\n{current_player}, guess the word: ")
-    #if word_guess.lower() == secret_word:
-        #print(f"Congratulations, {current_player}! You guessed the word: {secret_word}")
-        #if current_player == player1:
-            #player1_word_guesses += 1
-        #else:
-            #player2_word_guesses += 1
-        #break  # Exit the loop if word is guessed correctly
-    #else:
-        #print(f"Sorry, {current_player}! That's not the word.")
-        #attempts_left -= 1
-
 
     # Switch players if current player has used all their attempts of word is guessed
     if attempts_left == 0 or "*" not in hidden_word:
@@ -102,7 +96,7 @@ while attempts_left > 0 and "*" in hidden_word:
 
 # Whichever player guessed the most letters
 player1_final_score = player1_letter_guesses if current_player == player1 else player2_letter_guesses
-player1_final_score = player2_letter_guesses if current_player == player2 else player2_letter_guesses
+player2_final_score = player2_letter_guesses if current_player == player2 else player2_letter_guesses
 
 # Display result
 if "*" not in hidden_word:
@@ -110,3 +104,22 @@ if "*" not in hidden_word:
 
 # Write results to a file
 write_game_results(player1, player2, "*" not in hidden_word, secret_word, player1_letter_guesses, player1_word_guesses, player2_letter_guesses, player2_word_guesses)
+
+# Create a bar chart for letter guesses
+players = [player1, player2]
+letter_guesses = [player1_letter_guesses_list[-1], player2_letter_guesses_list[-1]]
+
+plt.bar(players, letter_guesses)
+plt.xlabel('Players')
+plt.ylabel('Letter Guesses')
+plt.title('Letter Guesses by Players')
+plt.show()
+
+# Create a pie chart for word guesses
+word_guesses = [player1_word_guesses_list[-1], player2_word_guesses_list[-1]]
+labels = ['Player 1', 'Player 2']
+
+plt.pie(word_guesses, labels=labels, autopct='%1.1f%%')
+plt.title('Word Guesses Chart')
+plt.show()
+
